@@ -10,4 +10,13 @@ public class Todogrupp5Application {
 		SpringApplication.run(Todogrupp5Application.class, args);
 	}
 
+	public static boolean loginSuccess(String username, String password) {
+		return username.equals("user") && password.equals("correctpass");
+	}
+
+	public static boolean loginFail(String username, String password) {
+		return !loginSuccess(username, password);
+		
+	}
+	
 }
