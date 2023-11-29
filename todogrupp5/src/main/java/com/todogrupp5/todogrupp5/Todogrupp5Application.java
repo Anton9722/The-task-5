@@ -1,5 +1,7 @@
 package com.todogrupp5.todogrupp5;
 
+import java.util.List;
+
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
@@ -18,5 +20,21 @@ public class Todogrupp5Application {
 		return !loginSuccess(username, password);
 		
 	}
+
+	public static Object deadLine(Object currentDateTime) {
+		return null;
+	}
+
+	public static Integer removeFromList(List<String> tasks) {
+		return null;
+	}
+
+    public static Object logIn(List<User> users) {
+        return null;
+    }
+
+    public static Object logOut(User user) {
+        return null;
+    }
 	
 }

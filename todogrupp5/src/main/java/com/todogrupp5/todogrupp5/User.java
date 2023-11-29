@@ -6,11 +6,13 @@ import java.util.List;
 public class User {
     private String username; 
     private String password;
-    private List<ToDoList> lists;
+    private boolean loggedIn;
+    private List<UserList> lists;
 
-    public User (String username, String password) {
+    public User (String username, String password, boolean loggedIn) {
         this.username = username;
         this.password = password;
+        this.loggedIn = loggedIn;
         this.lists = new ArrayList<>();
     }
 
@@ -30,12 +32,24 @@ public class User {
         this.password = password;
     }
 
-    public List<ToDoList> getLists() {
+    public List<UserList> getLists() {
         return lists;
     }
 
-    public void setLists(List<ToDoList> lists) {
+    public void setLists(List<UserList> lists) {
         this.lists = lists;
+    }
+
+    public boolean isLoggedIn() {
+        return loggedIn;
+    }
+
+    public void setLoggedIn(boolean loggedIn) {
+        this.loggedIn = loggedIn;
+    }
+
+    public void logIn(){
+        this.loggedIn = true;
     }
     
 }
