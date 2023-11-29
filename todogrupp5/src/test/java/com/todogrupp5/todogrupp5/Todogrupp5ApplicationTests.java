@@ -9,7 +9,6 @@ import java.util.List;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.scheduling.config.Task;
 
 @SpringBootTest
 class Todogrupp5ApplicationTests {
@@ -32,8 +31,8 @@ class Todogrupp5ApplicationTests {
 
 	@Test
 	public void addUserTest () {
-		ToDoList toDoList = new ToDoList("UserList");
-		User user = new User("user", "pass");
+		UserList toDoList = new UserList("UserList");
+		User user = new User("user", "pass", false);
 
 		toDoList.addUser(user);
 
@@ -41,19 +40,12 @@ class Todogrupp5ApplicationTests {
 		assertEquals("user", toDoList.getUsers().get(0).getUsername());
 	}
 
-	// @Test
-	// public void createToDoListTest() {
-	// 	ToDoList todolist = new ToDoList("List");
-	// 	assertEquals("List", todolist.getListName());
-
-	
-	//Georg's tester
 	@Test
     public void testDeadline(){
-        Task task = new Task("Städa",LocalDateTime.now());
+        ToDoItem task = new ToDoItem("Städa",LocalDateTime.now());
         String dateTime = "2023-12-08T11:45";
         LocalDateTime deadline = LocalDateTime.parse(dateTime);
-        assertEquals(deadline,App.deadLine2(task.getCurrentDateTime()));
+        assertEquals(deadline,Todogrupp5Application.deadLine(task.getCurrentDateTime()));
        
     }
     @Test
@@ -63,28 +55,28 @@ class Todogrupp5ApplicationTests {
         tasks.add("Torka");
         tasks.add("Laga mat");
         assertEquals(3,tasks.size());
-        assertEquals(2,App.removeFromList(tasks));
+        assertEquals(2,Todogrupp5Application.removeFromList(tasks));
     }
 	@Test
     public void testlogIn(){
-        List<Member> members = new ArrayList<>();
-        members.add(new Member("Sam","123!Sam",false));
-        members.add(new Member("Sanna","123!Sanna",false));
-        members.add(new Member("Anton","123!Anton",false));
-        members.add(new Member("Marcus","123!Marcus",false));
-        members.add(new Member("Georg","123!Georg",false));
+        List<User> users = new ArrayList<>();
+        users.add(new User("Sam","123!Sam",false));
+        users.add(new User("Sanna","123!Sanna",false));
+        users.add(new User("Anton","123!Anton",false));
+        users.add(new User("Marcus","123!Marcus",false));
+        users.add(new User("Georg","123!Georg",false));
       
         
-        assertEquals("Sam"+"123!Sam",App.logIn(members));
+        assertEquals("Sam"+"123!Sam",Todogrupp5Application.logIn(users));
 
  }  
     @Test
     public void testLogOut(){
 	    boolean isLoggedOut = true;
-	    Member member = new Member("","",false);
-	    assertEquals(isLoggedOut, App.logOut(member));
+	    User User = new User("","",false);
+	    assertEquals(isLoggedOut, Todogrupp5Application.logOut(User));
 }
-    //slut av Georg's tester
+    
 
 
 }
