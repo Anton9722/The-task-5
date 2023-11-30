@@ -29,9 +29,14 @@ public class Todogrupp5Application {
 		return null;
 	}
 
-    public static Object logIn(List<User> users) {
-        return null;
-    }
+    public static String logIn(List<User> users, String username, String password) {
+		for (User user : users) {
+			if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+				return user.getUsername() + user.getPassword();
+			}
+		}
+		return null; // returnera null om användaren inte hittades eller lösenordet var felaktigt
+	}
 
     public static Object logOut(User user) {
         return null;
