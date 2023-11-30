@@ -58,18 +58,16 @@ class Todogrupp5ApplicationTests {
         assertEquals(2,Todogrupp5Application.removeFromList(tasks));
     }
 	@Test
-    public void testlogIn(){
-        List<User> users = new ArrayList<>();
-        users.add(new User("Sam","123!Sam",false));
-        users.add(new User("Sanna","123!Sanna",false));
-        users.add(new User("Anton","123!Anton",false));
-        users.add(new User("Marcus","123!Marcus",false));
-        users.add(new User("Georg","123!Georg",false));
-      
-        
-        assertEquals("Sam"+"123!Sam",Todogrupp5Application.logIn(users));
+public void testlogIn(){
+    List<User> users = new ArrayList<>();
+    users.add(new User("Sam","123!Sam",false));
+    users.add(new User("Sanna","123!Sanna",false));
+    users.add(new User("Anton","123!Anton",false));
+    users.add(new User("Marcus","123!Marcus",false));
+    users.add(new User("Georg","123!Georg",false));
 
- }  
+    assertEquals("Sam"+"123!Sam",Todogrupp5Application.logIn(users, "Sam", "123!Sam"));
+}
     @Test
     public void testLogOut(){
 	    boolean isLoggedOut = true;
