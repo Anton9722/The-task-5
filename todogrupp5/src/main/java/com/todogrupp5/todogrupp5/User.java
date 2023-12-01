@@ -8,12 +8,14 @@ public class User {
     private String password;
     private boolean loggedIn;
     private List<UserList> lists;
+    private int id;
 
-    public User (String username, String password, boolean loggedIn) {
+    public User (String username, String password, boolean loggedIn, int id) {
         this.username = username;
         this.password = password;
         this.loggedIn = loggedIn;
         this.lists = new ArrayList<>();
+        this.id = id;
     }
 
     public String getUsername() {
@@ -50,6 +52,14 @@ public class User {
 
     public void logIn(){
         this.loggedIn = true;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
     
 }
