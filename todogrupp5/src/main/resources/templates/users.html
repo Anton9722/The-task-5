@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UsersList</title>
+    <link rel="stylesheet" href="/style.css"/>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Här i formuläret kan du lägga till nya användare</h1>
+        <div id="form2">
+            <form method="post" th:action="@{/new-user}">
+                <input type="text" name="user" placeholder="Ny användare">
+                <button type="submit">Skapa ny användare</button>
+            </form>
+        </div>
+        <h1>Lista på användare</h1>
+        <ul>
+            <li th:each="user : ${users}">
+            <a th:href="@{/user-lists + user.username}" th:text="${user.username}"></a>
+        </li>
+    </ul>
+    <div id="form3">
+        <form method="post" th:action="@{logout}">
+            <button id="logoutBtn">Logga ut</button>
+        </form>
+        <form method="get" action="/">
+            <button type="submit">Tillbaka</button>
+        </form>
+    </div>
+</body>
+</html>
