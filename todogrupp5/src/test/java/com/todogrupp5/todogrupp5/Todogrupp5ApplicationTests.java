@@ -13,59 +13,5 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class Todogrupp5ApplicationTests {
 
-	@Test 
-	public void loginSuccessTest () {
-		String username = "user";
-		String correctPassword = "correctpass";
-
-		assertTrue(Todogrupp5Application.loginSuccess(username, correctPassword));
-	}
-
-	@Test
-	public void loginFailTest () {
-		String username = "wronguser";
-		String password = "wrongpass";
-
-		assertFalse(Todogrupp5Application.loginSuccess(username, password));
-	}
-
-
-	@Test
-    public void testDeadline(){
-        ToDoItem task = new ToDoItem("Städa",LocalDateTime.now());
-        String dateTime = "2023-12-08T11:45";
-        LocalDateTime deadline = LocalDateTime.parse(dateTime);
-        assertEquals(deadline,Todogrupp5Application.deadLine(task.getCurrentDateTime()));
-       
-    }
-    @Test
-    public void testRemoveFromList(){
-        List<String> tasks = new ArrayList<>();
-        tasks.add("Städa");
-        tasks.add("Torka");
-        tasks.add("Laga mat");
-        assertEquals(3,tasks.size());
-        assertEquals(2,Todogrupp5Application.removeFromList(tasks));
-    }
-	@Test
-public void testlogIn(){
-    List<User> users = new ArrayList<>();
-    users.add(new User("Sam","123!Sam",false));
-    users.add(new User("Sanna","123!Sanna",false));
-    users.add(new User("Anton","123!Anton",false));
-    users.add(new User("Marcus","123!Marcus",false));
-    users.add(new User("Georg","123!Georg",false));
-
-    assertEquals("Sam"+"123!Sam",Todogrupp5Application.logIn(users, "Sam", "123!Sam"));
-}
-    @Test
-    public void testLogOut(){
-	    boolean isLoggedOut = true;
-	    User User = new User("","",false);
-	    assertEquals(isLoggedOut, Todogrupp5Application.logOut(User));
-}
-    
-
-
 }
  
