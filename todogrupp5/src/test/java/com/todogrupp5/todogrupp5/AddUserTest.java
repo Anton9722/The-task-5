@@ -1,8 +1,14 @@
+package com.todogrupp5.todogrupp5;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import org.junit.jupiter.api.Test;
+
 public class AddUserTest {
     @Test
 	public void addUserTest () {
 		UserList toDoList = new UserList("UserList");
-		User user = new User("user", "pass", false);
+		User user = new User("user", "pass", false, 0);
 
 		toDoList.addUser(user);
 
