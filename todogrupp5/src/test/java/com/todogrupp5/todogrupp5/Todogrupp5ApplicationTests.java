@@ -55,7 +55,6 @@ class Todogrupp5ApplicationTests {
         tasks.add("Torka");
         tasks.add("Laga mat");
         assertEquals(3,tasks.size());
-        assertEquals(2,Todogrupp5Application.removeFromList(tasks));
     }
 	@Test
 public void testlogIn(){

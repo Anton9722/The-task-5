@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="styleNewList.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 id="Header">Här vill vi ha listans namn!</h1>
+    <ul id="newList">
+        <div>
+            <form method="post" th:action="@{/new-item}" th:object="${newTodo}">
+            <input type="text" th:field="*{toDoItemName}">
+            <button type="submit">lägg till uppgift</button>
+            </form>
+        </div>
+        <li th:id="${item.id}" th:each="item: ${todoItems}">
+            <h2 id="listObjectMargin" class="inline" th:text="${item.toDoItemName}"></h2>
+            <button><a th:href="@{/remove-item/{itemID}(itemID=${item.id})}">tar bort</a> </button>
+        </li>
+    </ul>
+    
+</body>
+</html>
