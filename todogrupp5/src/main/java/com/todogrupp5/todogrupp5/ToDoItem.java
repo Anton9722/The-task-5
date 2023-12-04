@@ -3,24 +3,33 @@ package com.todogrupp5.todogrupp5;
 import java.time.LocalDateTime;
 
 public class ToDoItem {
-    private String toDo;
-    private LocalDateTime deadline;
-    public ToDoItem(String toDo, LocalDateTime deadline){
-        this.toDo = toDo;
-        this.deadline = deadline;
+    private String toDoItemName;
+    private LocalDateTime timeNow;
+    int id;
+    public ToDoItem(String toDoItemName, LocalDateTime timeNow,int id){
+        this.toDoItemName = toDoItemName;
+        this.timeNow = LocalDateTime.now();
+        this.id = id;
 
     }
-    public String getToDo() {
-        return toDo;
+    public String getToDoItemName() {
+        return toDoItemName;
     }
-    public void setToDo(String toDo) {
-        this.toDo = toDo;
+    public void setToDoItemName(String toDoItemName) {
+        this.toDoItemName = toDoItemName;
     }
-    public LocalDateTime getDeadline() {
-        return deadline;
+    public int getId() {
+        return id;
     }
-    public void setDeadline(LocalDateTime deadline) {
-        this.deadline = deadline;
+    public void setId(int id) {
+        this.id = id;
+    }
+    
+    public LocalDateTime getTimeNow() {
+        return timeNow;
+    }
+    public void setTimeNow(LocalDateTime timeNow) {
+        this.timeNow = timeNow;
     }
     public Object getCurrentDateTime() {
         return null;
