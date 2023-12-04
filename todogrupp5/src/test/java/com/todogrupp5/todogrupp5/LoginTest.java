@@ -1,3 +1,14 @@
+package com.todogrupp5.todogrupp5;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.junit.jupiter.api.Test;
+
 public class LoginTest {
     @Test 
 	public void loginSuccessTest () {
@@ -18,18 +29,18 @@ public class LoginTest {
     @Test
     public void testlogIn(){
         List<User> users = new ArrayList<>();
-        users.add(new User("Sam","123!Sam",false));
-        users.add(new User("Sanna","123!Sanna",false));
-        users.add(new User("Anton","123!Anton",false));
-        users.add(new User("Marcus","123!Marcus",false));
-        users.add(new User("Georg","123!Georg",false));
+        users.add(new User("Sam","123!Sam",false, 0));
+        users.add(new User("Sanna","123!Sanna",false, 1));
+        users.add(new User("Anton","123!Anton",false, 2));
+        users.add(new User("Marcus","123!Marcus",false, 3));
+        users.add(new User("Georg","123!Georg",false, 4));
     
         assertEquals("Sam"+"123!Sam",Todogrupp5Application.logIn(users, "Sam", "123!Sam"));
     }
         @Test
         public void testLogOut(){
             boolean isLoggedOut = true;
-            User User = new User("","",false);
+            User User = new User("","",false, 0);
             assertEquals(isLoggedOut, Todogrupp5Application.logOut(User));
     }
 }
