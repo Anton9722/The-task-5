@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class Todogrupp5ApplicationTests {
 
+<<<<<<< HEAD
 	@Test 
 	public void loginSuccessTest () {
 		String username = "user";
@@ -76,5 +77,7 @@ public void testlogIn(){
     
 
 
+=======
+>>>>>>> 6a25169c0d0e65bd3b15c28c7ec247d6eecf4f67
 }
  
