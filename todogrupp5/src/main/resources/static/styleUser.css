@@ -1,0 +1,49 @@
+body {
+    max-width: 1400px;
+    min-width: 640px;
+    margin: auto;
+    padding: 10px;
+}
+
+h1{ 
+    background-color: white;
+    margin: auto;
+    padding: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    border-bottom: 4px solid black;
+    text-align: center;
+}
+
+#form1 {
+    padding: 30px;
+    text-align: center;
+    border-bottom: 4px solid black;
+}
+
+#form2 {
+    display: grid;
+    place-items: center; 
+    padding: 10px;
+    text-align: center;
+}
+
+#form3 {
+    display: flex;
+}
+
+#form3 form {
+    margin-right: 10px;
+}
+
+ul {
+    list-style-type: none;
+    padding: 10px;
+    text-align: center;
+    align-items: center;
+    flex-direction: column; 
+}
+
+ul li {
+    padding: 5px;
+}
+
