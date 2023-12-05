@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.ArrayList;
@@ -21,7 +22,7 @@ public class UserController {
     // Skapa Användare
     @GetMapping("/createuser")
     public String getUser(Model model, String username, String password){
-        model.addAttribute("users", new User("", "", false, 0));
+        model.addAttribute("newUser", new User("", "", false, 0));
         model.addAttribute("users", users);
         return "createuser";
     }
@@ -29,20 +30,21 @@ public class UserController {
 
     // Lägg till Användare
     @PostMapping("/addUser")
-    public String addUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("confirmPassword") String confirmPassword, Model model) {
-        if (!password.equals(confirmPassword)) {
-            model.addAttribute("error", "Lösenorden matchar inte. Vänligen försök igen.");
-            return "createuser";
-        }
+    public String addUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("confirmPassword") String confirmPassword, Model model, RedirectAttributes redirectAttributes) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
-                model.addAttribute("error", "Användarnamnet är redan taget. Vänligen välj ett annat.");
-                return "createuser";
+                redirectAttributes.addFlashAttribute("error", "Användarnamnet är redan taget. Vänligen välj ett annat.");
+                System.out.println("fel användarnamn!");
+                return "redirect:/createuser";
             }
-        }
-        users.add(new User(username, password, false, users.size() + 1));
-        System.out.println("Postmapping addUser: " + username + " " + password);
-        return "redirect:/createuser";
+        }    
+        if (!password.equals(confirmPassword)) {
+            redirectAttributes.addFlashAttribute("error", "Lösenorden matchar inte. Vänligen försök igen.");
+            return "redirect:/createuser";      
+        }    
+            users.add(new User(username, password, false, users.size() + 1));
+            System.out.println("användare " + username + " är tillagd!");
+            return "redirect:/createuser";
     }
 
 
