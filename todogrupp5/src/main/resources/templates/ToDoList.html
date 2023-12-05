@@ -7,17 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    <h1 id="Header">Här vill vi ha listans namn!</h1>
+    <h1 id="Header" th:text="${listName}">Listnamn här</h1>
+    <button id="backBtn"><a th:href="@{/newListToAdd}">Tillbaka</a></button>
     <ul id="newList">
         <div>
-            <form method="post" th:action="@{/new-item}" th:object="${newTodo}">
+            <form method="post" th:action="@{/new-item/{listName}(listName=${listName})}" th:object="${newTodo}">
             <input type="text" th:field="*{toDoItemName}">
             <button type="submit">lägg till uppgift</button>
             </form>
         </div>
         <li th:id="${item.id}" th:each="item: ${todoItems}">
             <h2 id="listObjectMargin" class="inline" th:text="${item.toDoItemName}"></h2>
-            <button><a th:href="@{/remove-item/{itemID}(itemID=${item.id})}">tar bort</a> </button>
+            <button><a th:href="@{'/remove-item/' + ${listName} + '/' + ${item.getId()}}">Ta bort</a> </button>
         </li>
     </ul>
     

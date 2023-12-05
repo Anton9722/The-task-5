@@ -12,45 +12,58 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class newListController {
-    private static final List<ToDoList> lists = new ArrayList<>();
 
-   
+    private static final List<ToDoList> lists = new ArrayList<>();
 
     @GetMapping("/newListToAdd")
     public String newListModel(Model model){
         model.addAttribute("todoLists", lists);
-        model.addAttribute("newListObject", new ToDoList(null,0));
-        return ("newListToAdd");}
-
-     @PostMapping("/theNewList")
-     String newListAdd(@RequestParam("listName") String listName){
-        lists.add(new ToDoList(listName,lists.size()+1));
-        return "redirect:/newListToAdd";
-
-     }
-
-      @GetMapping("/remove-list/{listID}")
-     String seeList(@PathVariable("listID") int listID){
-         lists.removeIf (list -> list.getId() == listID);
-         return "redirect:/newListToAdd";
-     }
-     ToDoList todolist = new ToDoList(null, 0);
-     //ToDoItem todoitem = new ToDoItem(null, null, 0);
-     @GetMapping("/ToDoList")
-     String toDoList(Model model){
-         model.addAttribute("todoItems", todolist.getToDoItems());
-         model.addAttribute("newTodo", new ToDoItem(null, null, 0));
-         return"TodoList";
-     }
-     @PostMapping("/new-item")
-     String newItem(@RequestParam("toDoItemName")String toDoItemName){
-         todolist.getToDoItems().add(new ToDoItem(toDoItemName,null, todolist.getToDoItems().size()+1));
-         return"redirect:/ToDoList";
-     }
-     @GetMapping("remove-item/{itemID}")
-     String removeItem(@PathVariable("itemID") int itemID){
-         todolist.getToDoItems().removeIf(item -> item.getId()==itemID);
-         return"redirect:/ToDoList";
-     }
-
+        model.addAttribute("newListObject", new ToDoList(null, 0));
+        return "newListToAdd";
     }
+
+    @PostMapping("/theNewList")
+    String newListAdd(@RequestParam("listName") String listName){
+        lists.add(new ToDoList(listName, lists.size() + 1));
+        return "redirect:/newListToAdd";
+    }
+
+    @GetMapping("/remove-list/{listID}")
+    String seeList(@PathVariable("listID") int listID){
+        lists.removeIf (list -> list.getId() == listID);
+        return "redirect:/newListToAdd";
+    }
+
+    @GetMapping("/ToDoList/{listName}")
+    String toDoList(@PathVariable("listName") String listName, Model model){
+        ToDoList todoList = findListByName(listName);
+        model.addAttribute("listName", todoList.getListName());
+        model.addAttribute("todoItems", todoList.getToDoItems());
+        model.addAttribute("newTodo", new ToDoItem(null, null, 0)); 
+        return "TodoList";
+    }
+
+    @PostMapping("/new-item/{listName}")
+    String newItem(@PathVariable("listName") String listName,
+     @RequestParam("toDoItemName") String toDoItemName) {
+        
+        ToDoList todoList = findListByName(listName);
+        todoList.getToDoItems().add(new ToDoItem(toDoItemName, null, Integer.valueOf(todoList.getToDoItems().size() + 1)));
+        return "redirect:/ToDoList/{listName}";
+    }
+    
+    @GetMapping("remove-item/{listName}/{itemID}")
+        String removeItem(@PathVariable("listName") String listName, @PathVariable("itemID") int itemID) {
+        ToDoList todoList = findListByName(listName);
+        todoList.getToDoItems().removeIf(item -> item.getId() == itemID);
+        return "redirect:/ToDoList/{listName}";
+    }
+
+   /*  private ToDoList findListById(int listID) {
+        return lists.stream().filter(list -> list.getId() == listID).findFirst().orElse(null);
+    } */
+
+    private ToDoList findListByName(String listName) {
+        return lists.stream().filter(list -> list.getListName().equals(listName)).findFirst().orElse(null);
+    }
+}
