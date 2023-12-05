@@ -15,17 +15,17 @@
         <form id = newListFormular  method="post" th:action="@{/theNewList}" th:object="${newListObject}">
             <label for="makeNewList">Skapa ny lista:</label>
             <input id="makeNewList" th:field="*{listName}" type="text">
-            <button type="submit">lägg till</button>
+            <button type="submit">Lägg till</button>
            </form>
     </div>
     <br>
     <br>
     <ul id="newList">
     
-        <ul  th:id="${list.id}" th:each="list:${todoLists}">
-         <h2 th:text="${list.listName}" class="inline" id="listObjectMargin"></h2>
-         <button id="taBortBtn" class="inline"><a th:href=@{/remove-list/{listID}(listID=${list.id})}>tar bort</a></button>
-         <a id="listLink" th:href="@{/ToDoList}"><h4 >Länk till listan</h4></a>
+        <ul th:id="${list.id}" th:each="list:${todoLists}">
+            <h2 th:text="${list.listName}" class="inline" id="listObjectMargin"></h2>
+            <button id="taBortBtn" class="inline"><a th:href="@{/remove-list/{listID}(listID=${list.id})}">Ta bort</a></button>
+            <a id="listLink" th:href="@{/ToDoList/{listName}(listName=${list.listName})}"><h4>Länk till listan</h4></a>
         </ul>
    
     </ul> 
