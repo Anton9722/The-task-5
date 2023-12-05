@@ -4,35 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Users</title>
-    <link rel="stylesheet" href="/style.css" />
-    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="/styleUser.css" />
+    <script src="scriptUser.js" defer></script>
 </head>
 <body>
-    <div>
-        <h1>Lägg till medlemmar</h1>
-        <ol>
-            <form action="#" th:action="@{/addUser}" method="post">
-                <h5>Nytt Användarnamn</h5>
-                <input type="text" placeholder="Username" name="username" required>
-                <h5>Nytt Lösenord</h5>
-                <input type="password" placeholder="Password" name="password" required>
-                <h5>Bekräfta Lösenord</h5>
-                <input type="password" placeholder="Confirm Password" name="confirmPassword" required>
+    <h1>Lägg till användare</h1>
+        <div id="form2">
+            <form th:action="@{/addUser}" method="post">
+                <input type="text" placeholder="Ny användare" name="username" required>
+                <input type="password" placeholder="Nytt lösenord" name="password" required>
+                <input type="password" placeholder="Nytt lösenord igen" name="confirmPassword" required>
                 <button type="submit">Spara</button>
             </form>
-            <p id="passwordError" style="display: none;">Lösenorden matchar inte. Vänligen försök igen.</p><br>
-            <a href="/"><button id="backToStartBtn">Tillbaka till Startsidan</button></a>
-        </ol>
-        
-    </div>
-
-    <ul>
-        <li th:id="${user.id}" th:each="user : ${users}">
-            <a th:href="@{/remove-user/{userId}(userId=${user.id})}"><button>Ta bort</button></a>
-            <span th:text="${user.username}"></span>
-            <span th:text="${user.password}"></span>
-        </li>
-    </ul>
-
+            <p th:if="${error}" th:text="${error}"></p><br>
+        </div>
+        <h1>Medlemslista</h1>
+        <div>
+            <ul>
+                <li th:id="${user.id}" th:each="user : ${users}">
+                    <span th:text="${user.username}"></span>
+                    <span th:text="${user.password}"></span>                    
+                    <a th:href="@{/remove-user/{userId}(userId=${user.id})}"><button>Ta bort</button></a>
+                </li>
+            </ul>
+        </div>
+        <div id="form3">
+            <a th:href="@{/}"><button>Tillbaka till Start</button></a>
+        </div>
 </body>
 </html>
