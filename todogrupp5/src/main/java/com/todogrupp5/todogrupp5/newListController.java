@@ -21,6 +21,16 @@ public class newListController {
         model.addAttribute("newListObject", new ToDoList(null, 0));
         return "newListToAdd";
     }
+    @GetMapping("/newListToAdd/{username}")
+    public String newListToAdd(@PathVariable String username, Model model) {
+        User user = UserController.users.stream()
+        .filter(u -> u.getUsername().equals(username))
+        .findFirst()
+        .orElse(null);
+        model.addAttribute("user", user);
+        model.addAttribute("newListObject", new ToDoList(null, 0));
+        return "newListToAdd";
+    }
 
     @GetMapping("/newListToAdd/{username}")
     public String newListToAdd(@PathVariable String username, Model model) {
