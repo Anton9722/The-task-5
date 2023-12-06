@@ -58,4 +58,25 @@ public class UserController {
         }
             return "redirect:/createuser";
     }
+
+    public static User findUser(String username, String password) {
+        for (User user : users) {
+            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+        return null; // returnera null om ingen användare hittades
+    }
+
+    // Metod för att hantera inloggning
+    public static void handleLogin(String username, String password) {
+        User user = findUser(username, password);
+        if (user != null) {
+            // Användaren hittades, logga in användaren
+            // ...
+        } else {
+            // Användaren hittades inte, visa ett felmeddelande
+            // ...
+        }
+    }
 }

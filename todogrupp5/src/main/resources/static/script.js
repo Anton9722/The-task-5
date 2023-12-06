@@ -1,12 +1,10 @@
 if (document.getElementById("loginBtn")) {
     console.log("loginBtn found");
     document.getElementById("loginBtn").addEventListener("click", () => {
-        console.log("Button clicked");
         let username = document.getElementById("username").value;
         let password = document.getElementById("password").value;
-
+        console.log("Button clicked");
         console.log(users);
-
         let userFound = users.find(user => user.username === username && user.password === password);
 
         if (userFound) {

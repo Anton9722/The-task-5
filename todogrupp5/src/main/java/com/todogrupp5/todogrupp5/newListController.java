@@ -55,10 +55,12 @@ public class newListController {
     }
 
     @PostMapping("/new-item/{listName}")
-    String newItem(@PathVariable("listName") String listName,@RequestParam("toDoItemName") String toDoItemName) {
+    String newItem(@PathVariable("listName") String listName,
+     @RequestParam("toDoItemName") String toDoItemName) {
+        
         ToDoList todoList = findListByName(listName);
         todoList.getToDoItems().add(new ToDoItem(toDoItemName, null, Integer.valueOf(todoList.getToDoItems().size() + 1)));
-        return "redirect:/ToDoList/" + listName;
+        return "redirect:/ToDoList/{listName}";
     }
     
     @GetMapping("remove-item/{listName}/{itemID}")
