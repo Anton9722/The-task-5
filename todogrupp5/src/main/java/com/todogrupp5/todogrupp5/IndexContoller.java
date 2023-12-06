@@ -1,7 +1,6 @@
 package com.todogrupp5.todogrupp5;
 
-import java.util.ArrayList;
-import java.util.List;
+
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,26 +10,36 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class IndexContoller {
-    private static final List <User> userList = new ArrayList<>();
 
     @GetMapping("/")
     String getHomePage (Model model) {
+        model.addAttribute("users", UserController.users);
         return "index";
     }
 
     @PostMapping("/")
-    String login(@RequestParam("username") String username, @RequestParam ("password") String password){
-        if (username.equals("admin") && password.equals("admin")) {
+    String login(@RequestParam("username") String username, @RequestParam("password") String password) {
+    for (User user : UserController.users) {
+        if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
+            user.setLoggedIn(true);
             return "redirect:/createuser";
-        } else {
-            return "index";
         }
     }
+    return "index";
+}
     
-    @PostMapping("/logout")
-    String logout(Model model) {
-        userList.clear();
-        return "redirect:/";
+@PostMapping("/logout")
+String logout(@RequestParam(name = "loggedIn", defaultValue = "false") boolean loggedIn) {
+    for (User user : UserController.users) {
+        if (user.isLoggedIn()) {
+            user.setLoggedIn(false);
+            return "redirect:/";
+        }
     }
+    // Handle the case where the user is not found or not logged in
+    return "redirect:/";
+}
+    
+ 
 }
 
