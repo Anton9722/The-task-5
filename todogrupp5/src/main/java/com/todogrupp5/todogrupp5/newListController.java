@@ -28,6 +28,7 @@ public class newListController {
         .findFirst()
         .orElse(null);
         model.addAttribute("user", user);
+        model.addAttribute("todoLists", lists);
         model.addAttribute("newListObject", new ToDoList(null, 0));
         return "newListToAdd";
     }
