@@ -1,35 +1,31 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="styleNewList.css">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/styleUser.css"/>
 </head>
 <body>
     <h1 id="Header">To-Do-Listor</h1>
-    
-   
+    <h2>Skapa ny lista</h2>
     <div>
-   
         <form id = newListFormular  method="post" th:action="@{/theNewList}" th:object="${newListObject}">
-            <label for="makeNewList">Skapa ny lista:</label>
-            <input id="makeNewList" th:field="*{listName}" type="text">
+            <label for="makeNewList"></label>
+            <input id="makeNewList" th:field="*{listName}" type="text" required>
             <button type="submit">Lägg till</button>
            </form>
     </div>
     <br>
     <br>
     <ul id="newList">
-    
         <ul th:id="${list.id}" th:each="list:${todoLists}">
-            <h2 th:text="${list.listName}" class="inline" id="listObjectMargin"></h2>
+            <h2>
+                <a th:href="@{/ToDoList/{listName}(listName=${list.listName})}" th:text="${list.listName}" class="inline" id="listObjectMargin"></a>
+            </h2>
             <button id="taBortBtn" class="inline"><a th:href="@{/remove-list/{listID}(listID=${list.id})}">Ta bort</a></button>
-            <a id="listLink" th:href="@{/ToDoList/{listName}(listName=${list.listName})}"><h4>Länk till listan</h4></a>
         </ul>
-   
-    </ul> 
-   
-  
+    </ul>
+    <button id="backBtn"><a th:href="@{/createuser}">Tillbaka</a></button>
 </body>
 </html>
