@@ -1,5 +1,6 @@
 package com.todogrupp5.todogrupp5;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.boot.SpringApplication;
@@ -21,8 +22,12 @@ public class Todogrupp5Application {
 		
 	}
 
-	public static Object deadLine(Object currentDateTime) {
-		return null;
+	public static LocalDateTime deadLine(LocalDateTime currentDateTime, LocalDateTime deadline) {
+		if (currentDateTime.isBefore(deadline)) {
+			return deadline;
+		} else {
+			return null;
+		}
 	}
 
 	public static Integer removeFromList(List<String> tasks) {
@@ -38,8 +43,12 @@ public class Todogrupp5Application {
 		return null; // returnera null om användaren inte hittades eller lösenordet var felaktigt
 	}
 
-    public static Object logOut(User user) {
-        return null;
+	public static boolean logOut(User user) {
+		if (user == null) {
+			return false;
+		}
+		user.setLoggedIn(false);
+		return true;
     }
 	
 }

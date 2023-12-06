@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class newListController {
 
-    private static final List<ToDoList> lists = new ArrayList<>();
+    static final List<ToDoList> lists = new ArrayList<>();
 
     @GetMapping("/newListToAdd")
     public String newListModel(Model model){
@@ -28,6 +28,18 @@ public class newListController {
         .findFirst()
         .orElse(null);
         model.addAttribute("user", user);
+        model.addAttribute("newListObject", new ToDoList(null, 0));
+        return "newListToAdd";
+    }
+
+    @GetMapping("/newListToAdd/{username}")
+    public String newListToAdd(@PathVariable String username, Model model) {
+        User user = UserController.users.stream()
+        .filter(u -> u.getUsername().equals(username))
+        .findFirst()
+        .orElse(null);
+        model.addAttribute("user", user);
+        model.addAttribute("todoLists", lists);
         model.addAttribute("newListObject", new ToDoList(null, 0));
         return "newListToAdd";
     }
@@ -54,12 +66,10 @@ public class newListController {
     }
 
     @PostMapping("/new-item/{listName}")
-    String newItem(@PathVariable("listName") String listName,
-     @RequestParam("toDoItemName") String toDoItemName) {
-        
+    String newItem(@PathVariable("listName") String listName,@RequestParam("toDoItemName") String toDoItemName) {
         ToDoList todoList = findListByName(listName);
         todoList.getToDoItems().add(new ToDoItem(toDoItemName, null, Integer.valueOf(todoList.getToDoItems().size() + 1)));
-        return "redirect:/ToDoList/{listName}";
+        return "redirect:/ToDoList/" + listName;
     }
     
     @GetMapping("remove-item/{listName}/{itemID}")

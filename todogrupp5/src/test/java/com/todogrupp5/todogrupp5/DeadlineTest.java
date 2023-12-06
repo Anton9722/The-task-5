@@ -7,12 +7,11 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.Test;
 
 public class DeadlineTest {
-    	@Test
+    @Test
     public void testDeadline(){
-        ToDoItem task = new ToDoItem("Städa",LocalDateTime.now(), 0);
+        ToDoItem task = new ToDoItem("Städa", LocalDateTime.now(), 0);
         String dateTime = "2023-12-08T11:45";
         LocalDateTime deadline = LocalDateTime.parse(dateTime);
-        assertEquals(deadline,Todogrupp5Application.deadLine(task.getCurrentDateTime()));
-       
+        assertEquals(deadline, Todogrupp5Application.deadLine(task.getTimeNow(), deadline));
     }
 }

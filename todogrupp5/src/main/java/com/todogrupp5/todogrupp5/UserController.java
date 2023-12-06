@@ -6,9 +6,9 @@ import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
@@ -41,7 +41,7 @@ public class UserController {
             return "redirect:/createuser";      
         }    
             users.add(new User(username, password, false, users.size() + 1));
-            System.out.println("användare " + username + " är tillagd!");
+            System.out.println("Användare: " + username + "\n" + "Lösenord: " + password + "\n" + "Är tillagd!");
             return "redirect:/createuser";
     }
 

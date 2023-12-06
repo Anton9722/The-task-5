@@ -31,7 +31,5 @@ public class ToDoItem {
     public void setTimeNow(LocalDateTime timeNow) {
         this.timeNow = timeNow;
     }
-    public Object getCurrentDateTime() {
-        return null;
-    }
+
 }

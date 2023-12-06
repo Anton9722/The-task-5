@@ -13,7 +13,7 @@
             <form th:action="@{/addUser}" method="post">
                 <input type="text" placeholder="Ny användare" name="username" required>
                 <input type="password" placeholder="Nytt lösenord" name="password" required>
-                <input type="password" placeholder="Bekräfta lösenord" name="confirmPassword" required>
+                <input type="password" placeholder="Bekräfta lösenord" name="confirmPassword" required><br>
                 <button type="submit">Spara</button>
             </form>
             <p th:if="${error}" th:text="${error}"></p><br>

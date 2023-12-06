@@ -2,6 +2,7 @@ package com.todogrupp5.todogrupp5;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ArrayList;
@@ -37,10 +38,11 @@ public class LoginTest {
     
         assertEquals("Sam"+"123!Sam",Todogrupp5Application.logIn(users, "Sam", "123!Sam"));
     }
-        @Test
-        public void testLogOut(){
-            boolean isLoggedOut = true;
-            User User = new User("","",false, 0);
-            assertEquals(isLoggedOut, Todogrupp5Application.logOut(User));
+    @Test
+    public void testLogOut(){
+        User user = new User("","",false, 0);
+        Boolean result = Todogrupp5Application.logOut(user);
+        assertNotNull(result);
+        assertTrue(result);
     }
 }
