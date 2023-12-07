@@ -14,13 +14,13 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class UserController {
     static final List<User> users = new ArrayList<>();
-    static{
+  /*   static{
         users.add(new User("admin", "admin", false, 1));
-    }
+    } */
 
     // Skapa Användare
     @GetMapping("/createuser")
-    public String getUser(Model model, String username, String password){
+    String getUser(Model model, String username, String password){
         model.addAttribute("newUser", new User("", "", false, 0));
         model.addAttribute("users", users);
         return "createuser";
@@ -28,7 +28,7 @@ public class UserController {
 
     // Lägg till Användare
     @PostMapping("/addUser")
-    public String addUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("confirmPassword") String confirmPassword, Model model, RedirectAttributes redirectAttributes) {
+    String addUser(@RequestParam("username") String username, @RequestParam("password") String password, @RequestParam("confirmPassword") String confirmPassword, Model model, RedirectAttributes redirectAttributes) {
         for (User user : users) {
             if (user.getUsername().equals(username)) {
                 redirectAttributes.addFlashAttribute("error", "Användarnamnet är redan taget. Vänligen välj ett annat.");
@@ -47,7 +47,7 @@ public class UserController {
 
     // Ta bort Användare
     @GetMapping("/remove-user/{userId}")
-    public String removeUser(@PathVariable int userId){
+    String removeUser(@PathVariable int userId){
         User userToRemove = users.stream()
             .filter(user -> user.getId() == userId)
             .findFirst()
@@ -56,6 +56,12 @@ public class UserController {
             System.out.println("Removing User : " + userId + ", Username: " + userToRemove.getUsername());
             users.remove(userToRemove);
         }
-            return "redirect:/createuser";
+            return "redirect:/adminSida";
+    }
+
+    @GetMapping("/adminSida")
+    String adminSida(Model model){
+     model.addAttribute("users", users);
+     return"adminSida";
     }
 }
