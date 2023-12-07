@@ -3,45 +3,46 @@
     document.getElementById("loginBtn").addEventListener("click", () => {
          console.log("Button clicked");
         let username = document.getElementById("username").value;
-         let password = document.getElementById("password").value;
 
-       console.log(users);
-
+        let password = document.getElementById("password").value;
+        
+        console.log(users);
+        
         let userFound = users.find(user => user.username === username && user.password === password);
-   
-          if (userFound) {
-              localStorage.setItem("adminLoggedIn", userFound.adminLoggedIn.toString()); 
-              localStorage.setItem("loggedIn", userFound.loggedIn.toString()); 
-          } 
-   
-         else {
+
+        if (userFound) {
+            localStorage.setItem("adminLoggedIn", userFound.adminLoggedIn.toString()); 
+            localStorage.setItem("loggedIn", userFound.loggedIn.toString()); 
+        } 
+        
+        else {
+
             alert("Invalid username or password");
          }
      });
  }
 
- 
- let admin = false;
- loginBtn.addEventListener("click", () => {
-  if (username.value == "admin" && password.value == "admin"){
-              localStorage.setItem("key1",username.value);
-              localStorage.setItem("key2",password.value);
-               admin = true;
-             
-        }
-         else{
-             admin = false;
-         }
-
-    });
-    if(localStorage.getItem("key1")=="admin" && localStorage.getItem("key2")== "admin"){
-        admin = true;
-        window.location.href="/adminSida"; 
-    }
+let admin = false;
+loginBtn.addEventListener("click", () => {
+    if (username.value == "admin" && password.value == "admin"){
+        localStorage.setItem("key1",username.value);
+        localStorage.setItem("key2",password.value);
+        admin = true;   
+    } 
     else{
         admin = false;
     }
-    
+
+});
+
+if(localStorage.getItem("key1")=="admin" && localStorage.getItem("key2")== "admin"){
+    admin = true;
+    window.location.href="/adminSida"; 
+}
+else{
+    admin = false;
+}
+
 
 
 if (document.getElementById("logoutBtn")) {

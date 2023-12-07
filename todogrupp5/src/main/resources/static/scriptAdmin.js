@@ -10,10 +10,11 @@ else{
     message.textContent="Du är inte admin! Tillgång förbjuden!";
     message.style.color="red";
     document.body.appendChild(message);
-    
-
     const link = document.createElement("a");
     link.textContent="Länk till loggin";
     link.href="/";
     document.body.appendChild(link);
+
 }
+
+
