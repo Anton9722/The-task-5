@@ -50,5 +50,4 @@ public class Todogrupp5Application {
 		user.setLoggedIn(false);
 		return true;
     }
-	
 }
