@@ -1,26 +1,41 @@
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="/styleUser.css"/>
-</head>
-<body>
+    <link rel="stylesheet" href="/styleUser.css" />
+    <script src="/deadlinescript.js" defer></script>
+  </head>
+  <body>
     <h1 id="Header" th:text="${listName}">Listnamn här</h1>
     <h2>Things To Do:</h2>
     <ul id="newList">
-        <div>
-            <form method="post" th:action="@{/new-item/{listName}(listName=${listName})}" th:object="${newTodo}">
-            <input type="text" th:field="*{toDoItemName}">
-            <button type="submit">lägg till uppgift</button>
-            </form>
-        </div>
-        <li th:id="${item.id}" th:each="item: ${todoItems}">
-            <h2 id="listObjectMargin" class="inline" th:text="${item.toDoItemName}"></h2>
-            <button><a th:href="@{'/remove-item/' + ${listName} + '/' + ${item.getId()}}">Ta bort</a> </button>
-        </li>
+      <div>
+        <form
+          method="post"
+          th:action="@{/new-item/{listName}(listName=${listName})}"
+          th:object="${newTodo}"
+        >
+          <input type="text" th:field="*{toDoItemName}" />
+          <input type="date" th:field="*{deadline}" />
+          <button type="submit">lägg till uppgift</button>
+        </form>
+      </div>
+      <li th:id="${item.id}" th:each="item: ${todoItems}">
+        <h2
+          id="listObjectMargin"
+          class="inline"
+          th:text="${item.toDoItemName}"
+        ></h2>
+        <span th:text="${item.deadline}" class="deadlines"></span>
+        <button>
+          <a th:href="@{'/remove-item/' + ${listName} + '/' + ${item.getId()}}"
+            >Ta bort</a
+          >
+        </button>
+      </li>
     </ul>
     <button id="backBtn"><a th:href="@{/newListToAdd}">Tillbaka</a></button>
-</body>
+  </body>
 </html>
