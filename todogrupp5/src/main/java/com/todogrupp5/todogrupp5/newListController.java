@@ -1,5 +1,6 @@
 package com.todogrupp5.todogrupp5;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,18 +51,18 @@ public class newListController {
         ToDoList todoList = findListByName(listName);
         model.addAttribute("listName", todoList.getListName());
         model.addAttribute("todoItems", todoList.getToDoItems());
-        model.addAttribute("newTodo", new ToDoItem(null, null, 0)); 
+        model.addAttribute("newTodo", new ToDoItem(null, null, 0, null));
         return "TodoList";
     }
 
     @PostMapping("/new-item/{listName}")
-    String newItem(@PathVariable("listName") String listName,
-     @RequestParam("toDoItemName") String toDoItemName) {
-        
+
+    String newItem(@PathVariable("listName") String listName,@RequestParam("toDoItemName") String toDoItemName, @RequestParam("deadline") String deadline) {
         ToDoList todoList = findListByName(listName);
-        todoList.getToDoItems().add(new ToDoItem(toDoItemName, null, Integer.valueOf(todoList.getToDoItems().size() + 1)));
-        return "redirect:/ToDoList/{listName}";
-    }
+        todoList.getToDoItems().add(new ToDoItem(toDoItemName, null, Integer.valueOf(todoList.getToDoItems().size() + 1), deadline));
+        return "redirect:/ToDoList/" + listName;
+
+  }
     
     @GetMapping("remove-item/{listName}/{itemID}")
         String removeItem(@PathVariable("listName") String listName, @PathVariable("itemID") int itemID) {
