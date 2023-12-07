@@ -105,6 +105,9 @@ button {
 button:hover {
     background-color: #ccc; 
 }
+#adminRed{
+    color:#c0392b;
+}
 
 #adminRed{
     color:#c0392b;

@@ -1,8 +1,9 @@
-if (document.getElementById("loginBtn")) {
-    console.log("loginBtn found");
+ if (document.getElementById("loginBtn")) {
+     console.log("loginBtn found");
     document.getElementById("loginBtn").addEventListener("click", () => {
-        console.log("Button clicked");
+         console.log("Button clicked");
         let username = document.getElementById("username").value;
+
         let password = document.getElementById("password").value;
         
         console.log(users);
@@ -15,11 +16,11 @@ if (document.getElementById("loginBtn")) {
         } 
         
         else {
-            alert("Invalid username or password");
-        }
-    });
-}
 
+            alert("Invalid username or password");
+         }
+     });
+ }
 
 let admin = false;
 loginBtn.addEventListener("click", () => {

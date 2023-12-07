@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class UserController {
     static final List<User> users = new ArrayList<>();
+
+
   /*   static{
         users.add(new User("admin", "admin", false, 1));
     } */
@@ -60,8 +62,10 @@ public class UserController {
     }
 
     @GetMapping("/adminSida")
-    String adminSida(Model model){
+    String adminSida(Model model){   
      model.addAttribute("users", users);
      return"adminSida";
     }
+      
+
 }

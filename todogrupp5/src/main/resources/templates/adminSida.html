@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styleUser.css"/>
-
     <script src="scriptAdmin.js" defer></script>
     <script src="scriptAdminLogout.js" defer></script>
+    <script src="script.js"></script>
     <link rel="stylesheet" href="styleUser.css">
     <title>adminSida</title>
 </head>
 <body>
 
+    
     <div id="adminContent">
     <h1 id="adminRed">Adminsida</h1>
+    
+    
             <ul>
-                <li th:each="user : ${users}">
-                    <a th:href="@{/newListToAdd/{username}(username=*{user.username})}" th:text="${user.username}"></a>                   
+                    <li th:each="user : ${users}">
+                        <h3 th:href="@{/newListToAdd/{username}(username=*{user.username})}" th:text="${user.username}"></h3>                   
                     <a th:href="@{/remove-user/{userId}(userId=${user.id})}"><button id="deleteBtn">Radera användare</button></a>
                 </li>
             </ul>
-
+        
         <div id="form3">
+           
             <form method="post" th:action="@{/logout}" >
                 <button id="logoutBtn" type="submit" >Logga ut</button>
             </form>
-            
         </div>
     </div>
+    
+
 
 </body>
 </html>

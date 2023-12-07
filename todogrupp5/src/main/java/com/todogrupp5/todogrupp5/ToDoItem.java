@@ -42,5 +42,4 @@ public class ToDoItem {
     public void setDeadline(String deadline) {
         this.deadline = deadline;
     }
-
 }
