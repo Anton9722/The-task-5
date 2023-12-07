@@ -57,7 +57,7 @@ public class newListController {
     String newItem(@PathVariable("listName") String listName,@RequestParam("toDoItemName") String toDoItemName, @RequestParam("deadline") String deadline) {
         ToDoList todoList = findListByName(listName);
         todoList.getToDoItems().add(new ToDoItem(toDoItemName, null, Integer.valueOf(todoList.getToDoItems().size() + 1), deadline));
-        return "redirect:/ToDoList/" + listName;
+        return "redirect:/ToDoList/{listName}";
 
   }
     
