@@ -99,6 +99,11 @@ ul li button {
     padding-right: 20px;
 }
 
+.hidden-error {
+    color: red;
+    display: none;
+}
+
 ul li button:hover {
     background-color: #c0392b;
 }
