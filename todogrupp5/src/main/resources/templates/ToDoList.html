@@ -12,15 +12,12 @@
     <h2>Things To Do:</h2>
     <ul id="newList">
       <div>
-        <form
-          method="post"
-          th:action="@{/new-item/{listName}(listName=${listName})}"
-          th:object="${newTodo}"
-        >
+        <form id="taskForm" method="post" th:action="@{/new-item/{listName}(listName=${listName})}" th:object="${newTodo}">
           <input type="text" th:field="*{toDoItemName}" />
-          <input type="date" th:field="*{deadline}" />
-          <button type="submit">lägg till uppgift</button>
-        </form>
+          <input id="taskDeadline" type="date" th:field="*{deadline}" />
+          <button type="submit">Lägg till uppgift</button>
+      </form>
+      <p id="errorMessage" class="hidden-error"></p>
       </div>
       <li th:id="${item.id}" th:each="item: ${todoItems}">
         <h2
