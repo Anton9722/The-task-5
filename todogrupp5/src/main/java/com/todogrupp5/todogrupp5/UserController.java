@@ -14,9 +14,9 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class UserController {
     static final List<User> users = new ArrayList<>();
-    static{
-        users.add(new User("admin", "admin", false, 1));
-    }
+    // static{
+    //     users.add(new User("admin", "admin", false, 1));
+    // }
 
     // Skapa Användare
     @GetMapping("/createuser")
@@ -56,6 +56,11 @@ public class UserController {
             System.out.println("Removing User : " + userId + ", Username: " + userToRemove.getUsername());
             users.remove(userToRemove);
         }
-            return "redirect:/createuser";
+            return "redirect:/adminSida";
+    }
+    @GetMapping("/adminSida")
+    String adminSida(Model model){
+     model.addAttribute("users", users);
+     return"adminSida";
     }
 }

@@ -22,7 +22,7 @@
             <ul>
                     <li th:each="user : ${users}">
                         <a th:href="@{/newListToAdd/{username}(username=*{user.username})}" th:text="${user.username}"></a>                   
-                    <a th:href="@{/remove-user/{userId}(userId=${user.id})}"><button>Ta bort</button></a>
+                    
                 </li>
             </ul>
         </div>

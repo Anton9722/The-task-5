@@ -39,6 +39,7 @@ String logout(@RequestParam(name = "loggedIn", defaultValue = "false") boolean l
     // Handle the case where the user is not found or not logged in
     return "redirect:/";
 }
+ 
     
  
 }
