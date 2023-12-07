@@ -69,6 +69,7 @@ input[type="text"] {
 ul {
     list-style-type: none;
     padding: 10px;
+    justify-content: center;
     text-align: center;
     align-items: center;
     flex-direction: column; 
@@ -82,11 +83,20 @@ ul li {
     padding: 10px 0;
 }
 
+ul li h2 {
+    margin-left: 5px;
+}
+
 ul li button {
     background-color: #e74c3c;
     border: none;
     padding: 5px 10px;
     border-radius: 5px;
+    margin-right: 5px;
+}
+
+#deadline {
+    padding-right: 20px;
 }
 
 ul li button:hover {
@@ -112,3 +122,7 @@ button:hover {
 #adminRed{
     color:#c0392b;
 }
+
+
+
+

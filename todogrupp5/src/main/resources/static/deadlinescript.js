@@ -7,6 +7,7 @@ Array.from(deadlineElements).forEach(function (element) {
   var deadline = new Date(thTextValue);
 
   if (deadline < currentDate) {
+    element.style.color ="red";
     element.innerHTML = element.innerHTML + " Deadline har passerat";
   } else {
     console.log("det är lungt " + deadline);
