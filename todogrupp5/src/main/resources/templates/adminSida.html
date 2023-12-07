@@ -9,29 +9,20 @@
     <link rel="stylesheet" href="styleUser.css">
     <title>adminSida</title>
 </head>
-<body>
-
-    
+<body>    
     <div id="adminContent">
     <h1 id="adminRed">Adminsida</h1>
-    
-    
             <ul>
-                    <li th:each="user : ${users}">
+                <li th:each="user : ${users}">
                         <h3 th:href="@{/newListToAdd/{username}(username=*{user.username})}" th:text="${user.username}"></h3>                   
                     <a th:href="@{/remove-user/{userId}(userId=${user.id})}"><button id="deleteBtn">Radera användare</button></a>
                 </li>
             </ul>
-        
         <div id="form3">
-           
             <form method="post" th:action="@{/logout}" >
                 <button id="logoutBtn" type="submit" >Logga ut</button>
             </form>
         </div>
     </div>
-    
-
-
 </body>
 </html>

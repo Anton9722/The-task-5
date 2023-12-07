@@ -7,7 +7,7 @@ else{
     const message = document.createElement("h1");
     const remover = document.getElementById("adminContent");
     remover.remove();
-    message.textContent="Du är inte admin! Tillgång förbjuden!";
+    message.textContent="Du är inte admin! Tillträde förbjuden!";
     message.style.color="red";
     document.body.appendChild(message);
     const link = document.createElement("a");

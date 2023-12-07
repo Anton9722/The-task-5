@@ -15,11 +15,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 public class UserController {
     static final List<User> users = new ArrayList<>();
 
-
-  /*   static{
-        users.add(new User("admin", "admin", false, 1));
-    } */
-
     // Skapa Användare
     @GetMapping("/createuser")
     String getUser(Model model, String username, String password){

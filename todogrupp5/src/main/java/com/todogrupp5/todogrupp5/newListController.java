@@ -1,9 +1,6 @@
 package com.todogrupp5.todogrupp5;
-
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -70,10 +67,6 @@ public class newListController {
         todoList.getToDoItems().removeIf(item -> item.getId() == itemID);
         return "redirect:/ToDoList/{listName}";
     }
-
-   /*  private ToDoList findListById(int listID) {
-        return lists.stream().filter(list -> list.getId() == listID).findFirst().orElse(null);
-    } */
 
     private ToDoList findListByName(String listName) {
         return lists.stream().filter(list -> list.getListName().equals(listName)).findFirst().orElse(null);

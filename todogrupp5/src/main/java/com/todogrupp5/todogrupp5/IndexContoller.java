@@ -1,7 +1,4 @@
 package com.todogrupp5.todogrupp5;
-
-
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,11 +33,7 @@ String logout(@RequestParam(name = "loggedIn", defaultValue = "false") boolean l
             return "redirect:/";
         }
     }
-    // Handle the case where the user is not found or not logged in
     return "redirect:/";
 }
- 
-    
- 
 }
 

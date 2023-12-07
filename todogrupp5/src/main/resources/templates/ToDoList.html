@@ -28,11 +28,9 @@
           class="inline"
           th:text="${item.toDoItemName}"
         ></h2>
-        <span th:text="${item.deadline}" class="deadlines"></span>
+        <span th:text="${item.deadline}" class="deadlines" id="deadline"></span>
         <button>
-          <a th:href="@{'/remove-item/' + ${listName} + '/' + ${item.getId()}}"
-            >Ta bort</a
-          >
+          <a th:href="@{'/remove-item/' + ${listName} + '/' + ${item.getId()}}">Ta bort</a>
         </button>
       </li>
     </ul>

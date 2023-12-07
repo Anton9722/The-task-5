@@ -43,7 +43,7 @@ class newListControllerTest {
         newListController controller = new newListController();
         ToDoList testList = new ToDoList("testList", newListController.lists.size() + 1);
         newListController.lists.add(testList);
-        ToDoItem testItem = new ToDoItem("testItem", null, testList.getToDoItems().size() + 1);
+        ToDoItem testItem = new ToDoItem("testItem", null, testList.getToDoItems().size() + 1, null);
         testList.getToDoItems().add(testItem);
         String result = controller.removeItem("testList", testItem.getId());
         assertEquals("redirect:/ToDoList/{listName}", result);
@@ -76,7 +76,7 @@ class newListControllerTest {
     String listName = "testList";
     ToDoList testList = new ToDoList(listName, newListController.lists.size() + 1);
     newListController.lists.add(testList);
-    String result = controller.newItem(testList.getListName(), "testItem");
+    String result = controller.newItem(testList.getListName(), "testItem", "");
     assertEquals("redirect:/ToDoList/{listName}", result);
     assertTrue(testList.getToDoItems().stream().anyMatch(item -> item.getToDoItemName().equals("testItem")));
 }
