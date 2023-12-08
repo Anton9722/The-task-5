@@ -105,6 +105,9 @@ ul li button {
     padding-left: 30px;
     padding-top: 5px;
     padding-bottom: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 20px;
   }
   
 .red-background {
@@ -112,6 +115,9 @@ ul li button {
     padding-left: 50px;
     padding-top: 5px;
     padding-bottom: 5px;
+    border: none;
+    border-radius: 4px;
+    margin-right: 20px;
   }
 
 .hidden-error {
@@ -143,6 +149,19 @@ button:hover {
     color:#c0392b;
 }
 
+#newUserBtn{
+    margin-left: 20px;
+}
+
+#logoutBtn{
+    margin-left: 20px;
+}
+
+#loginError{
+    margin-top: 14px;
+    font-weight: bolder;
+    color: red;
+}
 
 
 
