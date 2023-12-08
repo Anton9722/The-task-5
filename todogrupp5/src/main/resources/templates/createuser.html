@@ -6,6 +6,9 @@
     <title>Users</title>
     <link rel="stylesheet" href="/styleUser.css"/>
     <script src="script.js" defer></script>
+    <script th:inline="javascript">
+        let users = /*[[${users}]]*/ [];
+    </script>
 </head>
 <body>
     <h1>Lägg till användare</h1>
@@ -26,10 +29,8 @@
             </ul>
         </div>
         <div id="form3">
-            <a th:href="@{/}"><button>Till startsidan</button></a>
-            <form method="post" th:action="@{logout}">
-                <button id="logoutBtn">Logga ut</button>
-            </form>
+            
+            
         </div>
 </body>
 </html>

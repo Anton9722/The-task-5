@@ -6,14 +6,17 @@
     <title>Startsida</title>
     <link rel="stylesheet" href="/styleUser.css"/>
     <script src="script.js" defer></script>
+    <script th:inline="javascript">
+        let users = /*[[${users}]]*/ [];
+    </script>
 </head>
 <body>
-    <h1>ToDo-List login</h1>
+    <h1 id = "todoheader">ToDo-List login</h1>
     <div id="form1">
-    <form method="post" th:action="@{/}">
-        <input type="text" name="username" id="username" placeholder="Användarnamn" required>
-        <input type="password" name="password" id="password" placeholder="Lösenord" required>
-        <button id="loginBtn"> Logga in</button> <button id="newUserBtn">Ny användare</a></button>
+   
     </form>
+    
+    </div>
+    
 </body>
 </html>
